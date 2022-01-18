@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ImageScreen extends StatefulWidget {
   const ImageScreen({Key? key}) : super(key: key);
@@ -9,14 +10,16 @@ class ImageScreen extends StatefulWidget {
 
 class _ImageScreenState extends State<ImageScreen> {
   @override
+  final picker = ImagePicker();
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red,
-        child: Icon(Icons.camera_alt_outlined),
-        onPressed: null,
-      ),
+          backgroundColor: Colors.red,
+          child: Icon(Icons.camera_alt_outlined),
+          onPressed: () {
+            picker.getImage(source: ImageSource.gallery);
+          }),
       appBar: AppBar(
         title: const Text('Digit Detector'),
         backgroundColor: Colors.red,
